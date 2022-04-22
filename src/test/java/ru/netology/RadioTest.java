@@ -6,9 +6,26 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
+    public void getCountStantions() {
+        Radio rad = new Radio(9);
+        int expected = 9;
+        int actual = rad.getcountStantions();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void getCountStantionsDefault() {
+        Radio rad = new Radio();
+        int expected = 10;
+        int actual = rad.getcountStantions();
+
+        assertEquals(expected, actual);
+    }
+    @Test
     public void testgetCurrentNumberStantion() {
         Radio rad = new Radio();
-        int expected = 0;
+        rad.setCurrentNumberStantion(8);
+        int expected = 8;
         int actual = rad.getCurrentNumberStantion();
 
         assertEquals(expected, actual);
@@ -16,7 +33,7 @@ public class RadioTest {
     @Test
     public void testsetNumberStationNext() {
         Radio rad = new Radio();
-        rad.setCurrentNumberStantion(9);
+        rad.setCurrentNumberStantion(rad.getcountStantions());
         rad.setNumberStationNext();
         int expected = 0;
         int actual = rad.getCurrentNumberStantion();
@@ -38,7 +55,7 @@ public class RadioTest {
         Radio rad = new Radio();
         rad.setCurrentNumberStantion(0);
         rad.setNumberStationPrev();
-        int expected = 9;
+        int expected = rad.getcountStantions();
         int actual = rad.getCurrentNumberStantion();
 
         assertEquals(expected, actual);
@@ -64,9 +81,8 @@ public class RadioTest {
     }
     @Test
     public void testsetCurrentNumberStantion2() {
-        Radio rad = new Radio();
-        rad.setCurrentNumberStantion(10);
-        int expected = 0;
+        Radio rad = new Radio(10);
+        int expected = 10;
         int actual = rad.getCurrentNumberStantion();
 
         assertEquals(expected, actual);
@@ -75,7 +91,7 @@ public class RadioTest {
     public void testsetCurrentNumberStantion3() {
         Radio rad = new Radio();
         rad.setCurrentNumberStantion(-1);
-        int expected = 0;
+        int expected = 10;
         int actual = rad.getCurrentNumberStantion();
 
         assertEquals(expected, actual);
@@ -93,9 +109,8 @@ public class RadioTest {
     @Test
     public void testincreaseVolume2() {
         Radio rad = new Radio();
-        rad.setCurrentVolume(9);
         rad.increaseVolume();
-        int expected = 10;
+        int expected = 31;
         int actual = rad.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -103,9 +118,9 @@ public class RadioTest {
     @Test
     public void testincreaseVolume3() {
         Radio rad = new Radio();
-        rad.setCurrentVolume(10);
+        rad.setCurrentVolume(100);
         rad.increaseVolume();
-        int expected = 10;
+        int expected = 100;
         int actual = rad.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -113,8 +128,7 @@ public class RadioTest {
     @Test
     public void testgetCurrentVolume() {
         Radio rad = new Radio();
-        rad.setCurrentVolume(8);
-        int expected = 8;
+        int expected = 30;
         int actual = rad.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -122,8 +136,8 @@ public class RadioTest {
     @Test
     public void testgetCurrentVolume2() {
         Radio rad = new Radio();
-        rad.setCurrentVolume(11);
-        int expected = 0;
+        rad.setCurrentVolume(111);
+        int expected = 30;
         int actual = rad.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -132,7 +146,7 @@ public class RadioTest {
     public void testgetCurrentVolume3() {
         Radio rad = new Radio();
         rad.setCurrentVolume(-1);
-        int expected = 0;
+        int expected = 30;
         int actual = rad.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -150,6 +164,7 @@ public class RadioTest {
     @Test
     public void testdecreaseVolume2() {
         Radio rad = new Radio();
+        rad.setCurrentVolume(0);
         rad.decreaseVolume();
         int expected = 0;
         int actual = rad.getCurrentVolume();
