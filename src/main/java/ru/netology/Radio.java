@@ -2,18 +2,21 @@ package ru.netology;
 
 public class Radio {
 
-    private int currentNumberStantion=10;
-    private int countStantions=10;
-    private int currentVolume=30;
+    private int currentNumberStantion = 10;
+    private int countStantions = 10;
+    private int currentVolume = 30;
 
-    public Radio (){
+    public Radio() {
     }
+
     public Radio(int countStantions) {
         this.countStantions = countStantions;
     }
+
     public int getcountStantions() {
         return countStantions;
     }
+
     public int getCurrentNumberStantion() {
         return currentNumberStantion;
     }
@@ -22,23 +25,24 @@ public class Radio {
         return currentVolume;
     }
 
-    public void setCurrentNumberStantion(int currentNumber){
+    public void setCurrentNumberStantion(int currentNumber) {
         if (currentNumber > countStantions) {
             return;
         }
         if (currentNumber < 0) {
             return;
         }
-        currentNumberStantion=currentNumber;
+        currentNumberStantion = currentNumber;
     }
-    public void setCurrentVolume(int tempcurrentVolume){
+
+    public void setCurrentVolume(int tempcurrentVolume) {
         if (tempcurrentVolume > 100) {
             return;
         }
         if (tempcurrentVolume < 0) {
             return;
         }
-        currentVolume=tempcurrentVolume;
+        currentVolume = tempcurrentVolume;
     }
 
     public void setNumberStationNext() {
